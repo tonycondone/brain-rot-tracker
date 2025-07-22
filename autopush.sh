@@ -31,6 +31,6 @@ fi
 while true; do
   git add .
   git commit -m "auto: $(date)"
-  git push origin $CURRENT_BRANCH
+  git push origin $CURRENT_BRANCH"
   sleep 10
 done
