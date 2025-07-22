@@ -12,7 +12,7 @@ if [ ! -d ".git" ]; then
   echo "➤ Now manually connect your GitHub repo:"
   echo "    1. Create a repo on GitHub named: $REPO_NAME"
   echo "    2. Run:"
-  echo "       git remote add origin https://github.com/<your-tony>/$REPO_NAME.git"
+  echo "       git remote add origin https://github.com/<your-tonycon>/$REPO_NAME.git"
   echo "       git branch -M main"
   echo "       git push -u origin main"
   echo "➤ Exiting to let you connect remote."
