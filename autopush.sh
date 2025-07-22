@@ -33,4 +33,4 @@ while true; do
   git commit -m "auto: $(date)"
   git push origin "$CURRENT_BRANCH"
   sleep 10
-done~
+done
