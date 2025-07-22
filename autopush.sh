@@ -8,6 +8,7 @@ if [ ! -d ".git" ]; then
   echo "Initializing Git for repo: $REPO_NAME"
   git init
   git add .
+  h
   git commit -m "Initial commit"
   echo "➤ Now manually connect your GitHub repo:"
   echo "    1. Create a repo on GitHub named: $REPO_NAME"
