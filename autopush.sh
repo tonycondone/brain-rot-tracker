@@ -1,37 +1,53 @@
 #!/bin/bash
 
-REPO_NAME=$(basename "$(pwd)")
-echo "🚀 Starting auto-push loop for $REPO_NAME..."
+# === Fully Auto Git Init + GitHub Push Script ===
 
-# Auto-initialize if .git doesn't exist
-if [ ! -d ".git" ]; then
-  echo "Initializing Git for repo: $REPO_NAME"
-  git init
-  git add .
-  
-  git commit -m "Initial commit"
-  echo "➤ Now manually connect your GitHub repo:"
-  echo "    1. Create a repo on GitHub named: $REPO_NAME"
-  echo "    2. Run:"
-  echo "       git remote add origin https://github.com/<your-tonycondone>/$REPO_NAME.git"
-  echo "       git branch -M main"
-  echo "       git push -u origin main"
-  echo "➤ Exiting to let you connect remote."
-  exit 0
+# Get folder name as repo name
+REPO_NAME=$(basename "$PWD")
+BRANCH_NAME="main"
+
+# Change this to your GitHub username
+GITHUB_USERNAME="tonycondone"
+GIT_EMAIL="touyboateng339@gmail.com"
+
+# Check GitHub auth
+if ! gh auth status &>/dev/null; then
+  echo "🔒 GitHub CLI not authenticated. Run: gh auth login"
+  exit 1
 fi
 
-# Detect and rename branch if it's still 'master'
-CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+# Init repo if not already
+if [ ! -d ".git" ]; then
+  echo "📦 Initializing Git..."
+  git init
+  git config user.name "$GITHUB_USERNAME"
+  git config user.email "$GIT_EMAIL"
+  git add .
+  git commit -m "Initial commit"
+fi
+
+# Rename branch if it's still 'master'
+CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
 if [ "$CURRENT_BRANCH" = "master" ]; then
-  echo "⚙️ Renaming branch 'master' to 'main'"
-  git branch -M main
-  CURRENT_BRANCH="main"
+  echo "⚙️ Renaming 'master' branch to '$BRANCH_NAME'..."
+  git branch -M "$BRANCH_NAME"
+  CURRENT_BRANCH="$BRANCH_NAME"
+fi
+
+# Add remote origin if missing
+if ! git remote get-url origin &>/dev/null; then
+  echo "🌐 Creating GitHub repo '$REPO_NAME'..."
+  gh repo create "$GITHUB_USERNAME/$REPO_NAME" --public --source=. --remote=origin --push
+else
+  echo "✅ Remote origin already set"
 fi
 
 # Auto-push loop
+echo "🚀 Starting auto-push loop for $REPO_NAME..."
 while true; do
   git add .
+  git diff --cached --quiet && sleep 2 && continue
   git commit -m "auto: $(date)"
-  git push origin "$CURRENT_BRANCH"
-  sleep 10
+  git push origin "$BRANCH_NAME"
+  sleep 2
 done
