@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brainrot-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: brainrot-backend
+  template:
+    metadata:
+      labels:
+        app: brainrot-backend
+    spec:
+      containers:
+        - name: backend
+          image: yourrepo/brainrot-backend:latest
+          ports:
+            - containerPort: 3001
+          envFrom:
+            - secretRef:
+                name: env-secrets
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brainrot-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: brainrot-frontend
+  template:
+    metadata:
+      labels:
+        app: brainrot-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: yourrepo/brainrot-frontend:latest
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: env-config

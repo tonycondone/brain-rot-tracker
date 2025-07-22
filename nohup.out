@@ -1,0 +1,4 @@
+error: pathspec 'main' did not match any file(s) known to git
+[2025-07-22 19:41:29] ERROR: Failed to checkout main branch
+error: pathspec 'main' did not match any file(s) known to git
+[2025-07-22 19:41:30] ERROR: Failed to checkout main branch
