@@ -6,7 +6,7 @@ Product Vision
 “Rescue your attention span.”
 brain-rot-tracker automatically measures how much low-value digital content you consume, translates it into a single “Rot Score”, and nudges you toward healthier habits with real-time feedback, streaks, and rewards.
 ────────────────────────────────────────
-2. Functional Requirements (MoSCoW
+2. Functional Requirements (MoSCoW)
 ────────────────────────────────────────
 MUST
 Auto-detect usage of configurable “junk” apps/sites (TikTok, Shorts, Reels, Twitter, Twitch).
