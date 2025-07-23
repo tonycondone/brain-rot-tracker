@@ -1,0 +1,49 @@
+{
+  "name": "brain-rot-tracker",
+  "version": "1.0.0",
+  "description": "Rescue your attention span - track and reduce digital brain rot",
+  "private": true,
+  "scripts": {
+    "setup": "npm run setup:rust && npm run setup:node && npm run setup:db",
+    "setup:rust": "cd daemon && cargo build",
+    "setup:node": "npm install && cd dashboard && npm install && cd ../app && npm install",
+    "setup:db": "cd daemon && cargo run --bin setup-db",
+    "dev": "concurrently \"npm run dev:daemon\" \"npm run dev:dashboard\" \"npm run dev:app\"",
+    "dev:daemon": "cd daemon && cargo run",
+    "dev:dashboard": "cd dashboard && npm run dev",
+    "dev:app": "cd app && npm run tauri dev",
+    "build": "npm run build:daemon && npm run build:dashboard && npm run build:app",
+    "build:daemon": "cd daemon && cargo build --release",
+    "build:dashboard": "cd dashboard && npm run build",
+    "build:app": "cd app && npm run tauri build",
+    "test": "npm run test:rust && npm run test:js",
+    "test:rust": "cd daemon && cargo test",
+    "test:js": "cd dashboard && npm test && cd ../app && npm test",
+    "lint": "npm run lint:rust && npm run lint:js",
+    "lint:rust": "cd daemon && cargo clippy",
+    "lint:js": "cd dashboard && npm run lint && cd ../app && npm run lint",
+    "clean": "cd daemon && cargo clean && cd ../dashboard && rm -rf dist node_modules && cd ../app && rm -rf dist node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "productivity",
+    "digital-wellness",
+    "screen-time",
+    "focus",
+    "rust",
+    "tauri",
+    "privacy"
+  ],
+  "author": "Tony Condone",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonycondone/brain-rot-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tonycondone/brain-rot-tracker/issues"
+  },
+  "homepage": "https://github.com/tonycondone/brain-rot-tracker#readme"
+}

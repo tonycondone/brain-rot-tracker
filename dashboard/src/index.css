@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-danger {
+    @apply bg-rot-600 hover:bg-rot-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-success {
+    @apply bg-healthy-600 hover:bg-healthy-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  .rot-meter {
+    @apply relative inline-flex items-center justify-center;
+  }
+  
+  .rot-ring {
+    @apply transform -rotate-90;
+  }
+  
+  .rot-ring-bg {
+    @apply stroke-gray-200;
+  }
+  
+  .rot-ring-progress {
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .rot-ring-progress.low {
+    @apply stroke-healthy-500;
+  }
+  
+  .rot-ring-progress.medium {
+    @apply stroke-yellow-500;
+  }
+  
+  .rot-ring-progress.high {
+    @apply stroke-rot-500;
+  }
+  
+  .rot-ring-progress.critical {
+    @apply stroke-rot-700;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+  }
+  
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-700;
+  }
+  
+  .bg-gradient-rot {
+    @apply bg-gradient-to-r from-rot-500 to-rot-700;
+  }
+  
+  .bg-gradient-healthy {
+    @apply bg-gradient-to-r from-healthy-500 to-healthy-700;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+    to { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+  }
+}

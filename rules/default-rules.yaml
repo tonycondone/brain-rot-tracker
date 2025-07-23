@@ -1,0 +1,251 @@
+# Brain Rot Tracker - Default Rules Configuration
+# 
+# This file defines how different applications and websites are scored
+# for "brain rot" points. Higher multipliers = more brain rot.
+# Negative multipliers = healthy activities that reduce brain rot.
+
+rules:
+  # Social Media & Short-form Content (High Brain Rot)
+  - pattern: "TikTok*"
+    multiplier: 12.0
+    category: "junk"
+    description: "Short-form video addiction"
+
+  - pattern: "*YouTube Shorts*"
+    multiplier: 10.0
+    category: "junk"
+    description: "YouTube's TikTok clone"
+
+  - pattern: "*Instagram*"
+    multiplier: 5.0
+    category: "junk"
+    description: "Social media scrolling"
+    unless_title_contains:
+      - "Photography Tutorial"
+      - "Art Tutorial"
+
+  - pattern: "*Facebook*"
+    multiplier: 5.0
+    category: "junk"
+    description: "Social media scrolling"
+
+  - pattern: "*Twitter*"
+    multiplier: 6.0
+    category: "junk"
+    description: "Endless timeline scrolling"
+
+  - pattern: "*Reddit*"
+    multiplier: 3.0
+    category: "junk"
+    description: "Forum browsing"
+    unless_title_contains:
+      - "r/programming"
+      - "r/science"
+      - "r/askscience"
+      - "r/learnprogramming"
+
+  # Video Content (Medium Brain Rot)
+  - pattern: "*YouTube*"
+    multiplier: 4.0
+    category: "junk"
+    description: "Video consumption"
+    unless_title_contains:
+      - "Tutorial"
+      - "Course"
+      - "MIT OpenCourseWare"
+      - "Khan Academy"
+      - "Crash Course"
+      - "TED"
+      - "Documentary"
+
+  - pattern: "*Twitch*"
+    multiplier: 4.0
+    category: "junk"
+    description: "Live streaming"
+
+  - pattern: "*Netflix*"
+    multiplier: 2.0
+    category: "junk"
+    description: "Binge watching"
+
+  - pattern: "*Disney+*"
+    multiplier: 2.0
+    category: "junk"
+    description: "Streaming service"
+
+  - pattern: "*Hulu*"
+    multiplier: 2.0
+    category: "junk"
+    description: "Streaming service"
+
+  # Gaming (Medium Brain Rot)
+  - pattern: "*Steam*"
+    multiplier: 3.0
+    category: "junk"
+    description: "Gaming platform"
+
+  - pattern: "*Epic Games*"
+    multiplier: 3.0
+    category: "junk"
+    description: "Gaming platform"
+
+  - pattern: "*League of Legends*"
+    multiplier: 4.0
+    category: "junk"
+    description: "Competitive gaming"
+
+  - pattern: "*Fortnite*"
+    multiplier: 4.0
+    category: "junk"
+    description: "Battle royale gaming"
+
+  # News & Information (Low-Medium Brain Rot)
+  - pattern: "*CNN*"
+    multiplier: 1.0
+    category: "neutral"
+    description: "News consumption"
+
+  - pattern: "*BBC*"
+    multiplier: 0.5
+    category: "neutral"
+    description: "Quality news"
+
+  - pattern: "*Reuters*"
+    multiplier: 0.0
+    category: "neutral"
+    description: "Factual news"
+
+  # Educational & Productive (Negative Brain Rot - Healthy)
+  - pattern: "*Kindle*"
+    multiplier: -3.0
+    category: "healthy"
+    description: "Reading books"
+
+  - pattern: "*Audible*"
+    multiplier: -2.0
+    category: "healthy"
+    description: "Audiobooks"
+
+  - pattern: "*Duolingo*"
+    multiplier: -5.0
+    category: "healthy"
+    description: "Language learning"
+
+  - pattern: "*Anki*"
+    multiplier: -4.0
+    category: "healthy"
+    description: "Spaced repetition learning"
+
+  - pattern: "*Khan Academy*"
+    multiplier: -4.0
+    category: "healthy"
+    description: "Educational content"
+
+  - pattern: "*Coursera*"
+    multiplier: -4.0
+    category: "healthy"
+    description: "Online courses"
+
+  - pattern: "*edX*"
+    multiplier: -4.0
+    category: "healthy"
+    description: "University courses"
+
+  - pattern: "*Udemy*"
+    multiplier: -3.0
+    category: "healthy"
+    description: "Skill learning"
+
+  # Development & Work (Negative Brain Rot)
+  - pattern: "*Visual Studio Code*"
+    multiplier: -2.0
+    category: "healthy"
+    description: "Programming"
+
+  - pattern: "*Code*"
+    multiplier: -2.0
+    category: "healthy"
+    description: "Programming"
+
+  - pattern: "*Terminal*"
+    multiplier: -1.0
+    category: "healthy"
+    description: "Command line work"
+
+  - pattern: "*iTerm*"
+    multiplier: -1.0
+    category: "healthy"
+    description: "Terminal application"
+
+  - pattern: "*Xcode*"
+    multiplier: -2.0
+    category: "healthy"
+    description: "iOS development"
+
+  - pattern: "*IntelliJ*"
+    multiplier: -2.0
+    category: "healthy"
+    description: "Java development"
+
+  - pattern: "*PyCharm*"
+    multiplier: -2.0
+    category: "healthy"
+    description: "Python development"
+
+  - pattern: "*Notion*"
+    multiplier: -1.0
+    category: "healthy"
+    description: "Note-taking and organization"
+
+  - pattern: "*Obsidian*"
+    multiplier: -1.0
+    category: "healthy"
+    description: "Knowledge management"
+
+  # Creative Work (Negative Brain Rot)
+  - pattern: "*Photoshop*"
+    multiplier: -1.0
+    category: "healthy"
+    description: "Creative work"
+
+  - pattern: "*Illustrator*"
+    multiplier: -1.0
+    category: "healthy"
+    description: "Creative work"
+
+  - pattern: "*Figma*"
+    multiplier: -1.0
+    category: "healthy"
+    description: "Design work"
+
+  - pattern: "*Blender*"
+    multiplier: -1.0
+    category: "healthy"
+    description: "3D modeling"
+
+  # Communication (Neutral)
+  - pattern: "*Slack*"
+    multiplier: 0.0
+    category: "neutral"
+    description: "Work communication"
+
+  - pattern: "*Discord*"
+    multiplier: 1.0
+    category: "neutral"
+    description: "Chat application"
+
+  - pattern: "*Zoom*"
+    multiplier: 0.0
+    category: "neutral"
+    description: "Video conferencing"
+
+  - pattern: "*Teams*"
+    multiplier: 0.0
+    category: "neutral"
+    description: "Work collaboration"
+
+  # Default catch-all for unknown applications
+  - pattern: "*"
+    multiplier: 0.0
+    category: "neutral"
+    description: "Unknown application"
