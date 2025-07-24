@@ -45,5 +45,8 @@
   "bugs": {
     "url": "https://github.com/tonycondone/brain-rot-tracker/issues"
   },
-  "homepage": "https://github.com/tonycondone/brain-rot-tracker#readme"
+  "homepage": "https://github.com/tonycondone/brain-rot-tracker#readme",
+  "dependencies": {
+    "cargo": "^0.8.0"
+  }
 }
